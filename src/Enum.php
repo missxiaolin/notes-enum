@@ -55,8 +55,7 @@ abstract class Enum
      */
     public function __call($name, $arguments)
     {
-        $class = $arguments[0];
-        $code = $arguments[1];
+        $code = $arguments[0];
         $name = strtolower(substr($name, 3));
         $message = '';
 
@@ -64,7 +63,7 @@ abstract class Enum
             return isset($this->$name[$code]) ? $this->$name[$code] : '';
         }
         // 建立反射类
-        $class = new \ReflectionClass($class);
+        $class = new \ReflectionClass(static::class);
         $properties = $class->getProperties();
         foreach ($properties as $item) {
             if (strpos($item->getName(),'ENUM_') === 0 && $item->getValue() == $code) {
