@@ -8,7 +8,8 @@ namespace Tests\App;
 // | Author: limx <462441355@qq.com> <https://github.com/missxiaolin>
 // +----------------------------------------------------------------------
 
-use xiaolin\Enum\Enum;
+
+use Lin\Enum\Enum;
 
 class ErrorCode extends Enum
 {

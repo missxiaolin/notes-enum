@@ -14,5 +14,8 @@ use Tests\App\ErrorCode;
 
 class BaseTest extends TestCase
 {
-
+    public function testAscii()
+    {
+        $this->assertEquals(700, ErrorCode::$ENUM_INVALID_TOKEN);
+    }
 }

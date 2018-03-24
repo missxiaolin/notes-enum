@@ -1,5 +1,5 @@
 <?php
-namespace xiaolin\Enum;
+namespace Lin\Enum;
 
 // +----------------------------------------------------------------------
 // | EnumException.php [ WE CAN DO IT JUST THINK IT ]
