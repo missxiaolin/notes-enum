@@ -1,10 +1,10 @@
 {
-    "name": "lin/notes-enum",
+    "name": "Lin/notes-enum",
     "description": "notes-enum",
     "type": "library",
     "license": "MIT",
     "keywords": [
-        "xiaolin"
+        "Lin"
     ],
     "authors": [
         {
