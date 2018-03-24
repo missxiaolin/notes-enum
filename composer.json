@@ -1,6 +1,6 @@
 {
     "name": "lin/notes-enum",
-    "description": "enum",
+    "description": "notes-enum",
     "type": "library",
     "license": "MIT",
     "keywords": [
