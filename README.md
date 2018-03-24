@@ -23,5 +23,5 @@ class ErrorCode extends Enum
 
 ~~~
 $code = ErrorCode::$ENUM_INVALID_TOKEN;
-$message = ErrorCode::getMessage(ErrorCode::class,$code);
+$message = ErrorCode::getMessage($code);
 ~~~
