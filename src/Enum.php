@@ -9,13 +9,16 @@ namespace Lin\Enum;
 // | Author: limx <462441355@qq.com> <https://github.com/missxiaolin>
 // +----------------------------------------------------------------------
 
+
+use Lin\Enum\Code\DocParserFactory;
+
 abstract class Enum
 {
     public static $_instance;
 
-    public $_adapter = 'memory';
-
-    public $_expire = 3600;
+//    public $_adapter = 'memory';
+//
+//    public $_expire = 3600;
 
     public function __construct()
     {
@@ -52,6 +55,24 @@ abstract class Enum
      */
     public function __call($name, $arguments)
     {
+        $class = $arguments[0];
+        $code = $arguments[1];
+        $name = strtolower(substr($name, 3));
+        $message = '';
 
+        if (isset($this->$name)) {
+            return isset($this->$name[$code]) ? $this->$name[$code] : '';
+        }
+        // 建立反射类
+        $class = new \ReflectionClass($class);
+        $properties = $class->getProperties();
+        foreach ($properties as $item) {
+            if (strpos($item->getName(),'ENUM_') === 0 && $item->getValue() == $code) {
+                $message = $item->getDocComment();
+            }
+        }
+        $info = DocParserFactory::getInstance()->parse($message);
+
+        return $info[ucfirst($name)] ?? '';
     }
 }
