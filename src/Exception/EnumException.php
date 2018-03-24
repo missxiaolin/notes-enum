@@ -1,20 +1,16 @@
 <?php
-namespace Tests\App;
+namespace xiaolin\Enum\Exception;
 // +----------------------------------------------------------------------
-// | ErrorCode.php [ WE CAN DO IT JUST THINK IT ]
+// | EnumException.php [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016-2017 xiaolin All rights reserved.
 // +----------------------------------------------------------------------
 // | Author: limx <462441355@qq.com> <https://github.com/missxiaolin>
 // +----------------------------------------------------------------------
 
-use xiaolin\Enum\Enum;
+use Exception;
 
-class ErrorCode extends Enum
+class EnumException extends Exception
 {
-    /**
-     * @Message('非法的TOKEN')
-     * @Desc('需要重新登录')
-     */
-    public static $ENUM_INVALID_TOKEN = 700;
+
 }
