@@ -3,7 +3,7 @@
 ## 安装
 
 ~~~
-composer require Lin/enum
+composer require xiaolin/notes-enum
 ~~~
 
 ## 使用
