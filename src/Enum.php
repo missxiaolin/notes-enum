@@ -72,6 +72,10 @@ abstract class Enum
         }
         $info = DocParserFactory::getInstance()->parse($message);
 
-        return $info[ucfirst($name)] ?? '';
+        if ($info[ucfirst($name)]) {
+            return '';
+        }
+        return $info[ucfirst($name)];
+
     }
 }
