@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\App;
 // +----------------------------------------------------------------------
 // | ErrorCode.php [ WE CAN DO IT JUST THINK IT ]
@@ -18,4 +19,11 @@ class ErrorCode extends Enum
      * @Desc('需要重新登录')
      */
     public static $ENUM_INVALID_TOKEN = 700;
+
+    /**
+     * @Message('非法的用户')
+     * @Desc('需要重新注册')
+     * @Key('INVALID')
+     */
+    public static $ENUM_INVALID_USER = 701;
 }
