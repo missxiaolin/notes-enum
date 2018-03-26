@@ -1,2 +1,4 @@
 /vendor
 .idea
+*.lock
+.php_cs.cache

@@ -1,5 +1,6 @@
 <?php
 namespace Lin\Enum\Exception;
+
 // +----------------------------------------------------------------------
 // | EnumException.php [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
@@ -12,5 +13,4 @@ use Exception;
 
 class EnumException extends Exception
 {
-
 }

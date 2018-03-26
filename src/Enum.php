@@ -1,4 +1,5 @@
 <?php
+
 namespace Lin\Enum;
 
 // +----------------------------------------------------------------------
@@ -11,31 +12,13 @@ namespace Lin\Enum;
 
 
 use Lin\Enum\Code\DocParserFactory;
+use Xin\Traits\Common\InstanceTrait;
 
 abstract class Enum
 {
+    use InstanceTrait;
+
     public static $_instance;
-
-//    public $_adapter = 'memory';
-//
-//    public $_expire = 3600;
-
-    public function __construct()
-    {
-
-    }
-
-    /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (isset(static::$_instance) && static::$_instance instanceof Enum) {
-            return static::$_instance;
-        }
-
-        return static::$_instance = new static();
-    }
 
     /**
      * @param $method
@@ -57,25 +40,31 @@ abstract class Enum
     {
         $code = $arguments[0];
         $name = strtolower(substr($name, 3));
-        $message = '';
+
+        $docs = [];
 
         if (isset($this->$name)) {
             return isset($this->$name[$code]) ? $this->$name[$code] : '';
         }
+
         // 建立反射类
         $class = new \ReflectionClass(static::class);
         $properties = $class->getProperties();
         foreach ($properties as $item) {
-            if (strpos($item->getName(),'ENUM_') === 0 && $item->getValue() == $code) {
-                $message = $item->getDocComment();
+            if (strpos($item->getName(), 'ENUM_') === 0) {
+                $docs[$item->getValue()] = $item->getDocComment();
             }
         }
-        $info = DocParserFactory::getInstance()->parse($message);
 
-        if ($info[ucfirst($name)]) {
-            return '';
+        // 缓存全部枚举信息
+        foreach ($docs as $id => $doc) {
+            $info = DocParserFactory::getInstance()->parse($doc);
+            foreach ($info as $k => $v) {
+                $k = strtolower($k);
+                $this->$k[$id] = $v;
+            }
         }
-        return $info[ucfirst($name)];
 
+        return isset($this->$name[$code]) ? $this->$name[$code] : '';
     }
 }
