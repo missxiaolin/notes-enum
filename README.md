@@ -1,5 +1,7 @@
 # notes-enum
 
+[![Build Status](https://travis-ci.org/forkgroup/notes-enum.svg?branch=master)](https://travis-ci.org/forkgroup/notes-enum)
+
 ## 安装
 
 ~~~
