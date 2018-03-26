@@ -12,7 +12,7 @@ class DocParserFactory
     public static function getInstance()
     {
         if (self::$p == null) {
-            self::$p = new DocParser ();
+            self::$p = new DocParser();
         }
         return self::$p;
     }
